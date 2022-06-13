@@ -45,6 +45,26 @@
                          </span>
                     </div>
 
+                    {{-- display success message on a successful action --}}
+                    @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
+                    </div>
+                    @endif
+
+                    {{-- display error on top of the form --}}
+                    @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul class="list-group">
+                            @foreach ($errors->all() as $error )
+                            <li class="list-group-item">
+                            {{ $error }}  
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     <div class="row">
 
                     <!-- DataTales Example -->
@@ -52,6 +72,8 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Employees</h6>
                         </div>
+
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="employeesTable" width="100%" cellspacing="0">
@@ -155,6 +177,8 @@
     </a>
 
     <!-- Add Employee Modal-->
+    <form action="/add-employee" method="POST">
+    @csrf
     <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -165,34 +189,37 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label style="margin-left:0px; font-weight:bold;" for="exampleInputEmail1">First Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                        <label style="margin-left:0px; font-weight:bold;" for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
                     </div>
                     <div class="form-group">
-                        <label style="margin-left:0px; font-weight:bold;" for="exampleInputEmail1">Last Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                        <label style="margin-left:0px; font-weight:bold;" for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" required>
                     </div>
                     <div class="form-group">
-                        <label style="margin-left:0px; font-weight:bold;" for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label style="margin-left:0px; font-weight:bold;" for="last_name">ID Number</label>
+                        <input type="text" class="form-control" id="id_number" name="id_number" placeholder="Enter ID Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:0px; font-weight:bold;" for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                       </div>
                       <div class="form-group">
-                        <label style="margin-left:0px; font-weight:bold;">Phone Number</label>
-                        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="0795704301">
+                        <label style="margin-left:0px; font-weight:bold;" for="phone">Phone Number</label>
+                        <input type="number" class="form-control" id="phone" name="phone" placeholder="0795704301" required>
                       </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Add Employee</a>
+                    <button class="btn btn-primary">Add Employee</button>
                 </div>
-                </form>
             </div>
         </div>
     </div>
+</form>
 
-    @include('corporate-dashboard.layouts.javascript')
+@include('corporate-dashboard.layouts.javascript')
 
 @endsection

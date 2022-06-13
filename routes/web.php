@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     // corporate routes
     Route::get('/branches', function(){ return view('corporate-dashboard.branches'); });
+
+    //manage employee
     Route::get('/employees', function(){ return view('corporate-dashboard.employees'); });
+    Route::post('add-employee',[EmployeeController::class,'addEmployee']);
+
+
+
     Route::get('/index', function(){ return view('corporate-dashboard.index'); });
     Route::get('/manage_account', function(){ return view('corporate-dashboard.manage_account'); });
     Route::get('/manage_account', function(){ return view('corporate-dashboard.manage_account'); });
