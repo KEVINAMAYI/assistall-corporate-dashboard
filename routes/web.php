@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 
 
@@ -24,6 +25,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     // corporate routes
     Route::get('/branches', function(){ return view('corporate-dashboard.branches'); });
+    Route::post('add-branch',[BranchController::class,'addBranch']);
+
 
     //manage employee
     Route::get('/employees', function(){ return view('corporate-dashboard.employees'); });

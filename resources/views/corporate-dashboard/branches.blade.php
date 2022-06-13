@@ -41,6 +41,26 @@
                          </span>
                     </div>
 
+                    {{-- display success message on a successful action --}}
+                    @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
+                    </div>
+                    @endif
+
+                    {{-- display error on top of the form --}}
+                    @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul class="list-group">
+                            @foreach ($errors->all() as $error )
+                            <li class="list-group-item">
+                            {{ $error }}  
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     <div class="row">
 
                         <!-- DataTales Example -->
@@ -143,37 +163,37 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Add Employee Modal-->
-    <div class="modal fade" id="branchModal" tabindex="-1" role="dialog" aria-labelledby="employeeModal"
+    <!-- Add Branch Modal-->
+    <form action="/add-branch" method="POST">
+    @csrf
+    <div class="modal fade" id="branchModal" tabindex="-1" role="dialog" aria-labelledby="branchModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Branch</h5>
+                    <h5 class="modal-title" id="branchModalLabel">Add Branch</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label style="margin-left:0px; font-weight:bold;" for="exampleInputEmail1">Branch Code</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                        <label style="margin-left:0px; font-weight:bold;" for="branch_code">Branch Code</label>
+                        <input type="text" class="form-control" id="branch_code" name="branch_code" placeholder="Enter Branch Code">
                     </div>
                     <div class="form-group">
-                        <label style="margin-left:0px; font-weight:bold;" for="exampleInputEmail1">Branch Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                        <label style="margin-left:0px; font-weight:bold;" for="branch_name">Branch Name</label>
+                        <input type="text" class="form-control" name="branch_name" id="branch_name" placeholder="Enter Branch Name">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Add Branch</a>
+                    <button type="submit" class="btn btn-primary">Add Branch</button>
                 </div>
-                </form>
             </div>
         </div>
     </div>
-
+    </form>
     @include('corporate-dashboard.layouts.javascript')
 
 @endsection
