@@ -24,12 +24,12 @@ Route::get('/', function () { return view('auth.login'); });
 Route::group(['middleware' => ['auth']], function () {
 
     // corporate routes
-    Route::get('/branches', function(){ return view('corporate-dashboard.branches'); });
+    Route::get('/branches',[BranchController::class,'index']);
     Route::post('add-branch',[BranchController::class,'addBranch']);
 
 
     //manage employee
-    Route::get('/employees', function(){ return view('corporate-dashboard.employees'); });
+    Route::get('/employees',[EmployeeController::class,'index'] );
     Route::post('add-employee',[EmployeeController::class,'addEmployee']);
 
 

@@ -78,50 +78,25 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                    @foreach($branches as $branch)
+                                        <tr>
+                                            <td>{{ $branch->branch_code }}</td>
+                                            <td>{{ $branch->branch_name }}</td>
+                                            <td>
+                                                <button class="btn-sm btn-warning">edit</button>
+                                                <button class="btn-sm btn-info">delete</button>
+                                            </td>
+                                            
+                                        </tr> 
+                                    @endforeach 
+                                    </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Branch Code</th>
                                             <th>Branch Name</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>00100</td>
-                                            <td>Kitale</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>00100</td>
-                                            <td>Bungoma</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>00100</td>
-                                            <td>Nairobi</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>00100</td>
-                                            <td>Eldoret</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>

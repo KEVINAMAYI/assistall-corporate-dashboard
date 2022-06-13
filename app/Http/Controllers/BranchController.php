@@ -8,16 +8,19 @@ use Illuminate\Http\Request;
 class BranchController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the branches.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $branches = Branch::all();
+        return view('corporate-dashboard.branches')->with(['branches' => $branches]);
+
+
     }
 
-    
+
 
     /**
      * Add a Branch to the database and return a view with a success message.

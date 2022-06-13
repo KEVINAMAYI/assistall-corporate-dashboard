@@ -82,59 +82,34 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
+                                            <th>ID Number</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                   
+                                    <tbody>
+                                        @foreach($employees as $employee)
+                                            <tr>
+                                                <td>{{ $employee->first_name.' '.$employee->last_name}}</td>
+                                                <td>{{ $employee->email  }}</td>
+                                                <td>{{ $employee->phone_number }}</td>
+                                                <td>{{ $employee->id_number }}</td>
+                                                <td>
+                                                    <button class="btn-sm btn-warning">edit</button>
+                                                    <button class="btn-sm btn-info">delete</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
+                                            <th>ID Number</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Alvin Otieno </td>
-                                            <td>kevinamayi20@gmail.com</td>
-                                            <td>0795704301</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>Kevin Amayi </td>
-                                            <td>kevinamayi20@gmail.com</td>
-                                            <td>0795704301</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>Sky  Alvin</td>
-                                            <td>kevinamayi20@gmail.com</td>
-                                            <td>0795704301</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>Mark Kimani</td>
-                                            <td>kevinamayi20@gmail.com</td>
-                                            <td>0795704301</td>
-                                            <td>
-                                                <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
-                                            </td>
-                                            
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
