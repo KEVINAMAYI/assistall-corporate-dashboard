@@ -96,7 +96,7 @@
                                                 <td>{{ $employee->id_number }}</td>
                                                 <td>
                                                     <button class="btn-sm btn-warning">edit</button>
-                                                    <button class="btn-sm btn-info">delete</button>
+                                                    <a href="/delete-employee/{{ $employee->id }}" class="btn-sm btn-info">delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -85,7 +85,7 @@
                                             <td>{{ $branch->branch_name }}</td>
                                             <td>
                                                 <button class="btn-sm btn-warning">edit</button>
-                                                <button class="btn-sm btn-info">delete</button>
+                                                <a href="delete-branch/{{ $branch->id }}" class="btn-sm btn-info">delete</a>
                                             </td>
                                             
                                         </tr> 

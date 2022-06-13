@@ -70,6 +70,8 @@ class BranchController extends Controller
      */
     public function deleteBranch(Branch $branch)
     {
-        //
+        $branch->delete();
+        session()->flash('success','Branch deleted Successfully');
+        return redirect()->back();
     }
 }

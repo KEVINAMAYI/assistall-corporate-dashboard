@@ -24,13 +24,18 @@ Route::get('/', function () { return view('auth.login'); });
 Route::group(['middleware' => ['auth']], function () {
 
     // corporate routes
+
+    //manage branches
     Route::get('/branches',[BranchController::class,'index']);
     Route::post('add-branch',[BranchController::class,'addBranch']);
+    Route::get('delete-branch/{branch}',[BranchController::class,'deleteBranch']);
 
 
-    //manage employee
+    //manage employees
     Route::get('/employees',[EmployeeController::class,'index'] );
     Route::post('add-employee',[EmployeeController::class,'addEmployee']);
+    Route::get('delete-employee/{employee}',[EmployeeController::class,'deleteEmployee']);
+
 
 
 

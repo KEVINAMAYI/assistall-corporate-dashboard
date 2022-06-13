@@ -78,6 +78,8 @@ class EmployeeController extends Controller
      */
     public function deleteEmployee(Employee $employee)
     {
-        //
+        $employee->delete();
+        session()->flash('success','Employee deleted Successfully');
+        return redirect()->back();
     }
 }
