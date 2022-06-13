@@ -95,6 +95,7 @@
                                         <tr>
                                             <th>Branch Code</th>
                                             <th>Branch Name</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                 </table>
