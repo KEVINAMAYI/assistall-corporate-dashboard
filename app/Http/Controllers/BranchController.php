@@ -17,8 +17,10 @@ class BranchController extends Controller
         //
     }
 
+    
+
     /**
-     * Show the form for creating a new resource.
+     * Add a Branch to the database and return a view with a success message.
      *
      * @return \Illuminate\Http\Response
      */
