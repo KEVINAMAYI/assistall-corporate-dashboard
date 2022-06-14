@@ -5,6 +5,7 @@
     $('.branch_edit_modal_btn').on('click',function(){
 
         const id = parseInt($(this).attr("id"));
+        $('#branch_id').val(id);
 
         //get employee data
         console.log("testing");
@@ -39,6 +40,8 @@
      $('.employee_edit_modal_btn').on('click',function(){
        
         const id = parseInt($(this).attr("id"));
+        $('#employee_id').val(id);
+
 
         //get employee data
         $.ajax({

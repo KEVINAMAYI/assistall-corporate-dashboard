@@ -232,8 +232,9 @@
                       </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" id="employee_id" name="employee_id" value="">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary">Edit Employee</button>
+                    <button type="submit" class="btn btn-primary">Edit Employee</button>
                 </div>
             </div>
         </div>

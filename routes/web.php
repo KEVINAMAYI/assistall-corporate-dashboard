@@ -23,26 +23,23 @@ Route::get('/', function () { return view('auth.login'); });
 
 Route::group(['middleware' => ['auth']], function () {
 
-    // corporate routes
+    /*corporate routes*/
 
     //manage branches
     Route::get('/branches',[BranchController::class,'index']);
     Route::post('add-branch',[BranchController::class,'addBranch']);
+    Route::post('edit-branch',[BranchController::class,'editBranch']);
     Route::get('delete-branch/{branch}',[BranchController::class,'deleteBranch']);
     Route::get('get-branch-data/{branch}',[BranchController::class,'getBranchData']);
-
-
 
     //manage employees
     Route::get('/employees',[EmployeeController::class,'index'] );
     Route::post('add-employee',[EmployeeController::class,'addEmployee']);
+    Route::post('edit-employee',[EmployeeController::class,'editEmployee']);
     Route::get('delete-employee/{employee}',[EmployeeController::class,'deleteEmployee']);
     Route::get('get-employee-data/{employee}',[EmployeeController::class,'getEmployeeData']);
 
-
-
-
-
+    //side bar endpoints
     Route::get('/index', function(){ return view('corporate-dashboard.index'); });
     Route::get('/manage_account', function(){ return view('corporate-dashboard.manage_account'); });
     Route::get('/manage_account', function(){ return view('corporate-dashboard.manage_account'); });

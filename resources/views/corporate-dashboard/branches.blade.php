@@ -197,6 +197,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <input type="hidden" id="branch_id" name="branch_id" value="">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn  btn-primary">Edit Branch</button>
                     </div>

@@ -71,16 +71,38 @@ class EmployeeController extends Controller
     }
   
    
-
     /**
      * Edit Employees data.
      *
-     * @param  \Illuminate\Http\Request  $request, Class Employee employee
+     * @param  \Illuminate\Http\Request  $request
      * @return  view
      */
-    public function editEmployee(Employee $employee)
+    public function editEmployee(Request  $request)
     {
-        //
+
+         //validate new employee and store details to db
+         $request->validate([
+            'edited_first_name' => ['required', 'string', 'max:255'],
+            'edited_last_name' => ['required', 'string', 'max:255'],
+            'edited_phone' => 'required',
+            'edited_id_number' => 'required',
+            'edited_email' => ['required', 'string', 'email', 'max:255'],
+         ]);
+
+         $data = $request->all();
+
+         Employee::where('id','=',$data['employee_id'])->update([
+            'first_name' => $data['edited_first_name'],
+            'last_name' => $data['edited_last_name'],
+            'phone_number' => $data['edited_phone'],
+            'id_number' => $data['edited_id_number'],
+            'email' => $data['edited_email'],
+
+         ]);
+        
+         session()->flash('success','Employee Edited Successfully');
+         return redirect()->back();
+
     }
 
   

@@ -63,15 +63,31 @@ class BranchController extends Controller
     }
   
 
-      /**
+    /**
      * Edit Branch data.
      *
      * @param  \Illuminate\Http\Request  $request, Class Branch $branch
      * @return  view
      */
-    public function editBranch(Branch $branch)
+    public function editBranch(Request $request)
     {
-        //
+
+        //validate edited branch and store details to db
+        $request->validate([
+            'edited_branch_code' => ['required', 'string', 'max:255'],
+            'edited_branch_name' => ['required', 'string', 'max:255']
+         ]);
+
+         $data = $request->all();
+
+         Branch::where('id','=',$data['branch_id'])->update([
+            'branch_code' => $data['edited_branch_code'],
+            'branch_name' => $data['edited_branch_name'],
+         ]);
+        
+         session()->flash('success','Branch Edited Successfully');
+         return redirect()->back();
+        
     }
 
 
