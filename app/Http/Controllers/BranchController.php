@@ -46,6 +46,21 @@ class BranchController extends Controller
          return redirect()->back();
     }
 
+
+    
+    /**
+     * get Branch data.
+     *
+     * @param  Class Branch $branch
+     * @return  Json
+     */
+    public function getBranchData(Branch $branch)
+    {
+        $branch = Branch::where('id','=',$branch->id)->get();
+        return response()->json([
+                'branch' => $branch
+            ]);
+    }
   
 
       /**

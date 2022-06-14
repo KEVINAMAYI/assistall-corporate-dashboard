@@ -193,6 +193,51 @@
             </div>
         </div>
     </div>
+   </form>
+
+
+   <!-- Edit Employee Modal-->
+   <form action="/edit-employee" method="POST">
+    @csrf
+    <div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label style="margin-left:0px; font-weight:bold;" for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:0px; font-weight:bold;" for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:0px; font-weight:bold;" for="last_name">ID Number</label>
+                        <input type="text" class="form-control" id="id_number" name="id_number" placeholder="Enter ID Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-left:0px; font-weight:bold;" for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                      </div>
+                      <div class="form-group">
+                        <label style="margin-left:0px; font-weight:bold;" for="phone">Phone Number</label>
+                        <input type="number" class="form-control" id="phone" name="phone" placeholder="0795704301" required>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary">Add Employee</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
 @include('corporate-dashboard.layouts.javascript')

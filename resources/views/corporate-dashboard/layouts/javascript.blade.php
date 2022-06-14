@@ -22,3 +22,5 @@
  <script src="corporate-dashboard/js/demo/chart-pie-demo.js"></script>
 
  <script src="corporate-dashboard/js/demo/datatables-demo.js"></script>
+
+ <script src="corporate-dashboard/js/main.js"></script>

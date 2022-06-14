@@ -84,7 +84,7 @@
                                             <td>{{ $branch->branch_code }}</td>
                                             <td>{{ $branch->branch_name }}</td>
                                             <td>
-                                                <button class="btn-sm btn-warning">edit</button>
+                                                <button  id="{{ $branch->id }}" class="branch_edit_modal_btn btn-sm btn-warning">edit</button>
                                                 <a href="delete-branch/{{ $branch->id }}" class="btn-sm btn-info">delete</a>
                                             </td>
                                             
@@ -171,5 +171,40 @@
     </div>
     </form>
     @include('corporate-dashboard.layouts.javascript')
+
+
+     <!-- Edit Branch Modal-->
+     <form action="/edit-branch" method="POST">
+        @csrf
+        <div class="modal fade" id="editbranchModal" tabindex="-1" role="dialog" aria-labelledby="editbranchModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editbranchModalLabel">Edit Branch</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label style="margin-left:0px; font-weight:bold;" for="branch_code">Branch Code</label>
+                            <input type="text" class="form-control" id="edited_branch_code" name="edited_branch_code" placeholder="Enter Branch Code">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-left:0px; font-weight:bold;" for="branch_name">Branch Name</label>
+                            <input type="text" class="form-control" name="edited_branch_name" id="edited_branch_name" placeholder="Enter Branch Name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn  btn-primary">Edit Branch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        
+        @include('corporate-dashboard.layouts.javascript')
 
 @endsection

@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/branches',[BranchController::class,'index']);
     Route::post('add-branch',[BranchController::class,'addBranch']);
     Route::get('delete-branch/{branch}',[BranchController::class,'deleteBranch']);
+    Route::get('get-branch-data/{branch}',[BranchController::class,'getBranchData']);
+
 
 
     //manage employees
