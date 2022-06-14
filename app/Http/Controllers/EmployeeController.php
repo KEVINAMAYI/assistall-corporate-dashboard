@@ -55,6 +55,21 @@ class EmployeeController extends Controller
 
     }
 
+
+    /**
+     * get Branch data.
+     *
+     * @param  Class Employee $employee
+     * @return  Json
+     */
+    public function getEmployeeData(Employee $employee)
+    {
+        $employee = Employee::where('id','=',$employee->id)->get();
+        return response()->json([
+                'employee' => $employee
+            ]);
+    }
+  
    
 
     /**
