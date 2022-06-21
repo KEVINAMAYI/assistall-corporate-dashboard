@@ -15,6 +15,7 @@ class Branch extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'branch_code',
         'branch_name'
     ];

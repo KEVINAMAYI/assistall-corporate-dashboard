@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -14,8 +16,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        
-        $employees = Employee::all();
+
+        //Logged in user_id data
+        $user_id = Auth::user()->id;
+        $employees = Employee::where('user_id','=',$user_id)->get();
         return view('corporate-dashboard.employees')->with(['employees' => $employees ]);
 
     }
@@ -42,6 +46,8 @@ class EmployeeController extends Controller
          $data = $request->all();
 
          Employee::create([
+
+            'user_id' => $user_id,
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'phone_number' => $data['phone'],

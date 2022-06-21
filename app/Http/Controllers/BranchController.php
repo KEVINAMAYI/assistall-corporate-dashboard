@@ -4,22 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class BranchController extends Controller
 {
+
+    
     /**
      * Display a listing of the branches.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $branches = Branch::all();
+    {   
+        //Logged in user_id data
+        $user_id = Auth::user()->id;
+        $branches = Branch::where('user_id','=',$user_id)->get();
         return view('corporate-dashboard.branches')->with(['branches' => $branches]);
 
-
     }
-
 
 
     /**
@@ -28,7 +32,10 @@ class BranchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addBranch(Request $request)
-    {
+    {   
+         //Logged in user_id
+         $user_id = Auth::user()->id;
+
          //validate new branch and store details to db
          $request->validate([
             'branch_code' => ['required', 'string', 'max:255'],
@@ -38,6 +45,8 @@ class BranchController extends Controller
          $data = $request->all();
 
          Branch::create([
+
+            'user_id' => $user_id,
             'branch_code' => $data['branch_code'],
             'branch_name' => $data['branch_name'],
          ]);
@@ -66,7 +75,7 @@ class BranchController extends Controller
     /**
      * Edit Branch data.
      *
-     * @param  \Illuminate\Http\Request  $request, Class Branch $branch
+     * @param  \Illuminate\Http\Request  $request
      * @return  view
      */
     public function editBranch(Request $request)
@@ -89,7 +98,6 @@ class BranchController extends Controller
          return redirect()->back();
         
     }
-
 
 
 
